@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+//Components
+import TopNavigation from 'components/TopNavigationBar';
+import PhotoList from 'components/PhotoList';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
+//state of favourite needs to be here 
+// state of favourite 
+
+const HomeRoute = (props) => {
   return (
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigation topicListData={props.topicData}/>
+      <PhotoList photoListData={props.photoData}/>
     </div>
   );
 };
