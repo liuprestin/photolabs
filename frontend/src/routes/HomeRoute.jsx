@@ -10,10 +10,12 @@ import '../styles/HomeRoute.scss';
 // state of favourite 
 
 const HomeRoute = (props) => {
+  const [doesFavPhotoExist, setDoesFavPhotoExist] = useState(false);
+
   return (
     <div className="home-route">
-      <TopNavigation topicListData={props.topicData}/>
-      <PhotoList photoListData={props.photoData}/>
+      <TopNavigation topicListData={props.topicData} doesFavPhotoExist={doesFavPhotoExist}/>
+      <PhotoList photoListData={props.photoData} setDoesFavPhotoExist={setDoesFavPhotoExist} />
     </div>
   );
 };
