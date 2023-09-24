@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useReducer } from "react";
 
-//Components
-import TopNavigation from 'components/TopNavigationBar';
-import PhotoList from 'components/PhotoList';
-
-import HomeRoute from 'routes/HomeRoute';
+import HomeRoute from "routes/HomeRoute";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 //Styles
-import './App.scss';
+import "./App.scss";
 
 //more mock data
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
+import photos from "mocks/photos";
+import topics from "mocks/topics";
 
 const sampleDataForPhotoList = [
   {
@@ -85,12 +82,117 @@ const sampleDataForTopicList = [
   },
 ];
 
+function appReducer(state, action) {
+  switch (action.type) {
+    case "OPEN_MODAL":
+      return { ...state, isModalOpen: true, selectedPhoto: action.payload };
 
-// Note: Rendering a single component to build components in isolation
+    case "CLOSE_MODAL":
+      return { ...state, isModalOpen: false, selectedPhoto: null };
+
+    case "TOGGLE_FAV_PHOTO":
+      const newFavPhotos = new Set(state.favPhotoSet);
+      if (action.payload.toggleFavorite) {
+        newFavPhotos.add(action.payload.photoId);
+      } else {
+        newFavPhotos.delete(action.payload.photoId);
+      }
+      return {
+        ...state,
+        favPhotoSet: newFavPhotos,
+        doesFavPhotoExist: newFavPhotos.size > 0,
+      };
+
+    default:
+      throw new Error(`Unsupported action type: ${action.type}`);
+  }
+}
+
+// Root of the Application
+// holds the state from at the top to be propigated down the tree of components
+// events from other components update the state here
 const App = () => {
+  const initialState = {
+    isModalOpen: false,
+    selectedPhoto: null,
+    favPhotoSet: new Set(),
+    doesFavPhotoExist: false,
+  };
+
+  const [state, dispatch] = useReducer(appReducer, initialState);
+
+  //For the Modal Screen
+  //const [isModalOpen, setIsModalOpen] = useState(false);
+  //const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+  // State for individual photos
+  //const [favPhotoSet, toggleFavPhotoSet] = useState(new Set());
+
+  /*
+  //For the Modal
+  const handleClickedPhoto = (photo) => {
+    setSelectedPhoto(photo);
+    setIsModalOpen(true);
+  };
+
+  const exitModal = () => {
+    setIsModalOpen(false);
+    setSelectedPhoto(null);
+  };
+
+  
+  // for the global state of the photofavouritse
+  const [doesFavPhotoExist, setDoesFavPhotoExist] = useState(false);
+  const onPhotoFavorited = (photoId, toggleFavorite) => {
+    toggleFavPhotoSet((prevState) => {
+      const newFavPhotos = new Set(prevState);
+      if (toggleFavorite) {
+        newFavPhotos.add(photoId);
+      } else {
+        newFavPhotos.delete(photoId);
+      }
+      setDoesFavPhotoExist(newFavPhotos.size > 0);
+
+      return newFavPhotos;
+    });
+  };
+  */
+
+  const handleClickedPhoto = (photo) => {
+    dispatch({ type: "OPEN_MODAL", payload: photo });
+  };
+
+  const exitModal = () => {
+    dispatch({ type: "CLOSE_MODAL" });
+  };
+
+  const onPhotoFavorited = (photoId, toggleFavorite) => {
+    dispatch({
+      type: "TOGGLE_FAV_PHOTO",
+      payload: { photoId, toggleFavorite },
+    });
+  };
+
   return (
     <div className="App">
-      <HomeRoute photoData={photos} topicData={topics}/>
+      <HomeRoute
+        photoData={photos}
+        topicData={topics}
+        onClickPhoto={handleClickedPhoto}
+        favPhotoSet={state.favPhotoSet}
+        onPhotoFavorited={onPhotoFavorited}
+        doesFavPhotoExist={state.doesFavPhotoExist}
+      />
+      {state.isModalOpen && (
+        <PhotoDetailsModal
+          photo={state.selectedPhoto}
+          onPhotoFavorited={onPhotoFavorited}
+          onExit={exitModal}
+          photoData={photos}
+          onClickPhoto={handleClickedPhoto}
+          favPhotoSet={state.favPhotoSet}
+        />
+      )}
     </div>
   );
 };
