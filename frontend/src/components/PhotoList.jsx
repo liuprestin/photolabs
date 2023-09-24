@@ -1,34 +1,31 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
+
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
+/**
+ * PhotoList Component Appends PhotoListItem component 
+ * to itself and assigns the click handler
+ * 
+ */
+
 const PhotoList = (props) => {
-  const [favPhotoSet, toggleFavPhotoSet] = useState(new Set());
-
-  const onPhotoFavorited = (photoId, toggleFavorite) => {
-    toggleFavPhotoSet((prevState) => {
-      const newFavPhotos = new Set(prevState);
-      if (toggleFavorite) {
-        newFavPhotos.add(photoId);
-      } else {
-        newFavPhotos.delete(photoId);
-      }
-      props.setDoesFavPhotoExist(newFavPhotos.size > 0);
-
-      return newFavPhotos;
-    });
-};
   const photos = props.photoListData.map((photo) => {
     return (
       <PhotoListItem
+        styleContext={props.styleContext}
         key={photo.id}
+        id={photo.id}
         location={photo.location}
         urls={photo.urls}
         user={photo.user}
-        onPhotoFavorited={(isFavorited) =>
-          onPhotoFavorited(photo.id, isFavorited)
+        favPhotoSet={props.favPhotoSet}
+        onPhotoFavorited={
+          props.onPhotoFavorited
         }
+        onClickPhoto={() => props.onClickPhoto(photo)}
       />
     );
   });
