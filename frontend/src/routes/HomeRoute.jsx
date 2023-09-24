@@ -1,21 +1,31 @@
-import React, {useState} from 'react';
+import React from "react";
 
 //Components
-import TopNavigation from 'components/TopNavigationBar';
-import PhotoList from 'components/PhotoList';
+import TopNavigation from "components/TopNavigationBar";
+import PhotoList from "components/PhotoList";
 
-import '../styles/HomeRoute.scss';
+import "../styles/HomeRoute.scss";
 
-//state of favourite needs to be here 
-// state of favourite 
+/**
+ * 
+ * @param {photoData, topicData, onClickPhoto, favPhotoSet, onPhotoFavorited, doesFavPhotoExist, } props 
+ * 
+ */
 
 const HomeRoute = (props) => {
-  const [doesFavPhotoExist, setDoesFavPhotoExist] = useState(false);
-
   return (
     <div className="home-route">
-      <TopNavigation topicListData={props.topicData} doesFavPhotoExist={doesFavPhotoExist}/>
-      <PhotoList photoListData={props.photoData} setDoesFavPhotoExist={setDoesFavPhotoExist} />
+      <TopNavigation
+        topicListData={props.topicData}
+        doesFavPhotoExist={props.doesFavPhotoExist}
+      />
+      <PhotoList
+        styleContext="homeroute"
+        photoListData={props.photoData}
+        onPhotoFavorited={props.onPhotoFavorited}
+        onClickPhoto={props.onClickPhoto}
+        favPhotoSet={props.favPhotoSet}
+      />
     </div>
   );
 };
