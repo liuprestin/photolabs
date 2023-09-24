@@ -4,10 +4,23 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
   return (
-    <article className="PhotoListItem photo-list__item" id={props.id}>
-      <PhotoFavButton onFavClick={props.onPhotoFavorited} />
-      <img className="photo-list__image" src={props.urls.regular}></img>
-      
+    <article
+      className={`PhotoListItem photo-list__item ${props.styleContext}`}
+      id={props.id}
+    >
+      <PhotoFavButton
+        selected={props.favPhotoSet.has(props.id)}
+        onFavClick={(isFavorited) =>
+          props.onPhotoFavorited(props.id, isFavorited)
+        }
+      />
+      <div onClick={props.onClickPhoto}>
+        <img
+          className={`photo-list__image ${props.styleContext}`}
+          src={props.urls.regular}
+        ></img>
+      </div>
+
       <div className="photo-list__user-details">
         <img
           className="photo-list__user-profile"
