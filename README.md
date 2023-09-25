@@ -4,7 +4,7 @@ A web gallery application
 
 ## Screenshots
 
-!["Homepage Example"](screenshot.png)
+!["Homepage Example"](doc/screenshot.png)
 
 ## Setup
 

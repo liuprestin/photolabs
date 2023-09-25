@@ -1,7 +1,7 @@
 TODO:
 
 - CSS fixes -> if I can fix that I can fix it - if not - no big deal
-
+- may need to seperate out the useEffect calls to the useApplicationData.jsx 
 
 BUG:
 - Topic list bug --> associated with the API server - great..
