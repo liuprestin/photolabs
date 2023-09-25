@@ -1,5 +1,5 @@
 
-//track the Global State 
+// track the Global State 
 // the only component that tracks its own state is PhotoFavButton
 function stateReducer(state, action) {
   switch (action.type) {

@@ -2,6 +2,11 @@ import React from "react";
 
 import "../styles/TopicListItem.scss";
 
+/**
+ * 
+ * A single Topic Link 
+ */
+
 const TopicListItem = (props) => {
   return (
     <div

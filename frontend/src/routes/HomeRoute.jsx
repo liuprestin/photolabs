@@ -7,9 +7,7 @@ import PhotoList from "components/PhotoList";
 import "../styles/HomeRoute.scss";
 
 /**
- * 
- * @param {photoData, topicData, onClickPhoto, favPhotoSet, onPhotoFavorited, doesFavPhotoExist, } props 
- * 
+ * HomePage component
  */
 
 const HomeRoute = (props) => {

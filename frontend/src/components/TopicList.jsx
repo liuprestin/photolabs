@@ -3,6 +3,11 @@ import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
 
+/**
+ * 
+ * TopicList displays collection of topics 
+ */
+
 const TopicList = (props) => {
   const topics = props.topicListData.map((topic) => {
     return (

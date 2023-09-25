@@ -5,6 +5,11 @@ import FavBadge from "./FavBadge";
 
 import "../styles/TopNavigationBar.scss";
 
+/**
+ * 
+ * Navigation Bar component
+ */
+
 const TopNavigation = (props) => {
   return (
     <div className="top-nav-bar">

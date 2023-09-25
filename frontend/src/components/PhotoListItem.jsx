@@ -2,6 +2,12 @@ import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
+/**
+ * A Component with single photo and associated 
+ * details. 
+ *  
+ */
+
 const PhotoListItem = (props) => {
   return (
     <article

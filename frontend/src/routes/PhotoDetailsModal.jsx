@@ -6,12 +6,10 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from "components/PhotoList";
 
 /**
+ * Photo Modal Component
  * 
  * Upon Clicking a photo, a modal is toggled revealing 
  * a photo and its associated information
- * 
- * @param {photo, onPhotoFavorited, onExit, photoData, onClickPhoto, favPhotoSet} props 
- * 
  */
 
 const PhotoDetailsModal = (props) => {

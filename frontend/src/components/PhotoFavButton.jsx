@@ -7,8 +7,6 @@ import "../styles/PhotoFavButton.scss";
  * 
  * The Heart icon that represents if a topic is favourited or not
  * 
- * @param {selected} props 
- * 
  */
 
 function PhotoFavButton(props) {
