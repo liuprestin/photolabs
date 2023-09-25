@@ -17,6 +17,7 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigation
         topicListData={props.topicData}
+        onTopicSelected={props.onTopicSelected}
         doesFavPhotoExist={props.doesFavPhotoExist}
       />
       <PhotoList

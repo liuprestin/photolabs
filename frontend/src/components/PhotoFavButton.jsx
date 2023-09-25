@@ -3,6 +3,14 @@ import React, { useState } from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
+/**
+ * 
+ * The Heart icon that represents if a topic is favourited or not
+ * 
+ * @param {selected} props 
+ * 
+ */
+
 function PhotoFavButton(props) {
   const [selected, setSelected] = useState(false);
 

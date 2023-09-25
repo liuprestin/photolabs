@@ -1,0 +1,37 @@
+TODO:
+
+- CSS fixes -> if I can fix that I can fix it - if not - no big deal
+
+
+BUG:
+- Topic list bug --> associated with the API server - great..
+- DESIGN ISSUE --> missing persisting of the favourite state - will need to 
+add another table to sort that one out. 
+- CSS bugs 
+
+NOTES:
+
+App
+|
+HomeRoute
+|
+PhotoList  - TopNav
+|                  |
+PhotoListItem      FavBadge
+|                  | 
+PhotoFavButton     FavIcon
+|
+FavIcon
+
+App
+|
+PhotoDetailsModal
+|
+PhotoListItem      
+|                  
+PhotoFavButton     
+|
+FavIcon
+
+
+State needs to be at the top: ie. the App.jsx
