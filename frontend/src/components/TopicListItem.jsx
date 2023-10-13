@@ -11,7 +11,7 @@ const TopicListItem = (props) => {
   return (
     <div
       className="topic-list__item"
-      onClick={() => props.onTopicSelected(props.slug)}
+      onClick={() => props.onTopicSelected(props.topicID)}
     >
       {props.slug}
     </div>
