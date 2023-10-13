@@ -3,7 +3,7 @@ import React, { useState, useReducer, useEffect } from "react";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
-import stateReducer from "hook/useApplicationData";
+import stateReducer from "hooks/useApplicationData";
 //Styles
 import "./App.scss";
 
