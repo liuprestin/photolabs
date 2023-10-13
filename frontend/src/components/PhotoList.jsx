@@ -15,7 +15,6 @@ const PhotoList = (props) => {
   const photos = props.photoListData.map((photo) => {
     return (
       <PhotoListItem
-        styleContext={props.styleContext}
         key={photo.id}
         id={photo.id}
         location={photo.location}

@@ -11,7 +11,7 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
   return (
     <article
-      className={`PhotoListItem photo-list__item ${props.styleContext}`}
+      className={`PhotoListItem photo-list__item`}
       id={props.id}
     >
       <PhotoFavButton
@@ -22,7 +22,7 @@ const PhotoListItem = (props) => {
       />
       <div onClick={props.onClickPhoto}>
         <img
-          className={`photo-list__image ${props.styleContext}`}
+          className={`photo-list__image`}
           src={props.urls.regular}
         ></img>
       </div>

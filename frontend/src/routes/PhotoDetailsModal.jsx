@@ -47,7 +47,6 @@ const PhotoDetailsModal = (props) => {
       </div>
       <p className="photo-details-modal__header">Related Photos</p>
       <PhotoList
-        styleContext="modal"
         photoListData={props.photoData}
         onClickPhoto={props.onClickPhoto}
         onPhotoFavorited={props.onPhotoFavorited}

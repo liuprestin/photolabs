@@ -19,7 +19,6 @@ const HomeRoute = (props) => {
         doesFavPhotoExist={props.doesFavPhotoExist}
       />
       <PhotoList
-        styleContext="homeroute"
         photoListData={props.photoData}
         onPhotoFavorited={props.onPhotoFavorited}
         onClickPhoto={props.onClickPhoto}
