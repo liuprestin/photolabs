@@ -86,9 +86,6 @@ export const useApplicationData = () => {
 
   // Topics have Integer IDs
   const topicSelectedHandler = async (topicId) => {
-    
-    console.log(topicId);
-
     try {
       const response = await fetch(`/api/topics/photos/${topicId}`);
       const data = await response.json();
