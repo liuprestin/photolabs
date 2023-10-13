@@ -13,6 +13,7 @@ import PhotoList from "components/PhotoList";
  */
 
 const PhotoDetailsModal = (props) => {
+  console.log(props.photoData);
   return (
     <div className="photo-details-modal" onClick={props.onExit}>
       <button className="photo-details-modal__close-button">
