@@ -10,10 +10,11 @@ import PhotoList from "components/PhotoList";
  * 
  * Upon Clicking a photo, a modal is toggled revealing 
  * a photo and its associated information
+ * 
+ * Also renders the included similar photos
  */
 
 const PhotoDetailsModal = (props) => {
-  console.log(props.photoData);
   return (
     <div className="photo-details-modal" onClick={props.onExit}>
       <button className="photo-details-modal__close-button">
@@ -48,7 +49,7 @@ const PhotoDetailsModal = (props) => {
       </div>
       <p className="photo-details-modal__header">Related Photos</p>
       <PhotoList
-        photoListData={props.photoData}
+        photoListData={props.photo.similar_photos}
         onClickPhoto={props.onClickPhoto}
         onPhotoFavorited={props.onPhotoFavorited}
         favPhotoSet={props.favPhotoSet}
