@@ -2,24 +2,11 @@ import React, { useState, useReducer, useEffect } from "react";
 
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-
-import stateReducer from "hooks/useApplicationData";
+import { useApplicationData } from "hooks/useApplicationData";
+import stateReducer from "hooks/stateReducer";
 //Styles
 import "./App.scss";
 
-//API url
-const serverUrl = 'http://localhost:8001';
-
-
-const topicSelectedHandler = async (topicId) => {
-  try {
-    const response = await fetch(serverUrl + `/api/topics/photos/${topicId}`);
-    const data = await response.json();
-    setPhotoData(data);
-  } catch (error) {
-    console.error(`Error fetching photos for topic ${topicId}:`, error);
-  }
-};
 
 // Root of the Application
 // holds the state from at the top to be propigated down the tree of components
@@ -52,33 +39,8 @@ const App = () => {
 
   //------------Fetching Data----------------
 
-  const [photoData, setPhotoData] = useState([]);
-  const [topicData, setTopicData] = useState([]);
+  const { photoData, topicData, topicSelectedHandler } = useApplicationData() || {};
 
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        const response = await fetch(serverUrl + '/api/photos');
-        const data = await response.json();
-        setPhotoData(data);
-      } catch (err) {
-        console.error('Error fetching photos:', err);
-      }
-    };
-
-    const fetchTopics = async () => {
-      try {
-        const response = await fetch(serverUrl + '/api/topics');
-        const data = await response.json();
-        setTopicData(data);
-      } catch (err) {
-        console.error('Error fetching topics:', err);
-      }
-    };
-
-    fetchPhotos();
-    fetchTopics();
-  }, []);
 
 
   //------------Render ----------------------
